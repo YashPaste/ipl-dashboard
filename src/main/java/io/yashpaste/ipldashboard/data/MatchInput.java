@@ -14,6 +14,10 @@ public class MatchInput {
     private String winner;
     private String result;
     private String result_margin;
+    private String eliminator;
+    private String method;
+    private String umpire1;
+    private String umpire2;
     public String getId() {
         return id;
     }
@@ -116,9 +120,6 @@ public class MatchInput {
     public void setUmpire2(String umpire2) {
         this.umpire2 = umpire2;
     }
-    private String eliminator;
-    private String method;
-    private String umpire1;
-    private String umpire2;
+    
 
 }
