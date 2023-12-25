@@ -19,7 +19,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
+// import org.springframework.jdbc.datasource;
 import io.yashpaste.ipldashboard.model.Match;
 
 @Configuration
@@ -73,7 +75,7 @@ public class BatchConfig {
     }
 
     @Bean
-    public Step step1(JobRepository jobRepository, DataSourceTransactionManager transactionManager, FlatFileItemReader<MatchInput> reader, MatchDataProcessor processor, JdbcBatchItemWriter<Match> writer) {
+    public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager, FlatFileItemReader<MatchInput> reader, MatchDataProcessor processor, JdbcBatchItemWriter<Match> writer) {
         return new StepBuilder("step1", jobRepository)
                 .<MatchInput, Match>chunk(3, transactionManager)
                 .reader(reader)

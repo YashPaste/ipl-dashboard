@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableBatchProcessing
-@ComponentScan(basePackages = "io.yashpaste.ipldashboard")
+@ComponentScan(basePackages={"io.yashpaste"})
 public class IplDashboardApplication {
 
 	public static void main(String[] args) {
