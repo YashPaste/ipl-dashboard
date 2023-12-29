@@ -65,7 +65,7 @@ public class BatchConfig {
                 .build();
     }
 
-    //listener is used here. Listener checks if
+    //listener is used here. Listener checks if the job is completed
     @Bean
     public Job importUserJob(JobRepository jobRepository, Step step1, JobCompletionNotificationListener listener) {
         return new JobBuilder("importUserJob", jobRepository)
@@ -75,7 +75,7 @@ public class BatchConfig {
     }
 
     @Bean
-    public Step step1(JobRepository jobRepository, FlatFileItemReader<MatchInput> reader, MatchDataProcessor processor, JdbcBatchItemWriter<Match> writer) {
+    public Step step1( FlatFileItemReader<MatchInput> reader, MatchDataProcessor processor, JdbcBatchItemWriter<Match> writer) {
         return new StepBuilder("step1", jobRepository)
                 .<MatchInput, Match>chunk(3, transactionManager)
                 .reader(reader)
