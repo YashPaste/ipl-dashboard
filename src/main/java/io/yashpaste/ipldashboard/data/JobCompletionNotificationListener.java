@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
-import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +26,7 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
             log.info("!!! JOB FINISHED! Time to verify the results");
 
             jdbcTemplate.query("SELECT team1, team1, date FROM match",
-            (rs,row)-> "Team 1" + rs.getString(1) + "Team 2 " + rs.getString(2) + "date " +rs.getString(3))
+            (rs,row)-> "Team 1" + rs.getString(1) + "Team 2" + rs.getString(2))
                     .forEach(str -> System.out.println(str));
         }
     }
