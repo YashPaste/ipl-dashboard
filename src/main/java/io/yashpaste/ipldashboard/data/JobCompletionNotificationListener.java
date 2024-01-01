@@ -26,7 +26,7 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
             log.info("!!! JOB FINISHED! Time to verify the results");
 
             jdbcTemplate.query("SELECT team1, team1, date FROM match",
-            (rs,row)-> "Team 1" + rs.getString(1) + "Team 2" + rs.getString(2))
+            (rs,row)-> "Team 1" + rs.getString(2) + "Team 2" + rs.getString(3))
                     .forEach(str -> System.out.println(str));
         }
     }
